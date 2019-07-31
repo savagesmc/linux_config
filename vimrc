@@ -275,7 +275,7 @@ nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.inl' > cscope.files<CR>
+nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.inl' -o -iname '*.py' > cscope.files<CR>
   \:!cscope -b -i cscope.files -f cscope.out<CR>
   \:cs reset<CR>
 
