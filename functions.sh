@@ -2,6 +2,15 @@
 set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+verlte() {
+   s="`echo -e "$1\n$2" | sort -V | head -n 1`"
+   [ "$1" = "$s" ]
+}
+
+verlt() {
+   [ "$1" = "$2" ] && return 1 || verlte $1 $2
+}
+
 # dot_files=(gitconfig vimrc)
 dot_files=$(find ${DIR}/dot_files -type f)
 scripts=$(find ${DIR}/scripts -type f)
@@ -19,10 +28,10 @@ function install_files()
 {
    if command -v tmux > /dev/null; then
       tmux_version=$(tmux -V | cut -c 6- | sed 's/[a-z]//g')
-      if [[ $(echo "$tmux_version >= 2.9" | bc) -eq 1 ]] ; then
-         ln -sf ${DIR}/tmux.conf ~/.tmux.conf
-      else
+      if [[ $(verlte "$tmux_version" "2.9") ]] ; then
          ln -sf ${DIR}/tmux_pre2_9.conf ~/.tmux.conf
+      else
+         ln -sf ${DIR}/tmux.conf ~/.tmux.conf
       fi
    fi
    for f in ${dot_files[@]}
