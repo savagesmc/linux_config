@@ -5,7 +5,7 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 Plug 'VundleVim/Vundle.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -149,8 +149,8 @@ let g:airline_extensions = []
 let g:airline_theme = "wombat"
 
 syntax enable
-let g:solarized_termcolors=256
-colorscheme solarized
+"let g:solarized_termcolors=256
+"colorscheme solarized
 
 "Block comment code in C/C++
 autocmd FileType cpp,c let b:surround_45 = "#if 0\n\r\n#endif\n"
@@ -181,6 +181,7 @@ nmap <S-Tab> gT
 
 "Shortcut to split windows and move around between them
 nmap ,v <C-w>v<C-w>l
+nmap ,s <C-w>s<C-w>j
 " nmap ,s <C-w>s<C-w>j
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -209,7 +210,6 @@ set conceallevel=0
 
 let g:airline_powerline_fonts = 1
 set history=1000                    " Store a ton of history (default is 20)
-set spell                           " Spell checking on
 set hidden                          " Allow buffer switching without saving
 
 set backspace=indent,eol,start  " Backspace for dummies
