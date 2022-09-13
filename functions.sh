@@ -26,14 +26,6 @@ fi
 
 function install_files()
 {
-   if command -v tmux > /dev/null; then
-      tmux_version=$(tmux -V | cut -c 6- | sed 's/[a-z]//g')
-      if [[ $(verlte "$tmux_version" "2.9") ]] ; then
-         ln -sf ${DIR}/tmux_pre2_9.conf ~/.tmux.conf
-      else
-         ln -sf ${DIR}/tmux.conf ~/.tmux.conf
-      fi
-   fi
    for f in ${dot_files[@]}
    do
       ln -sf ${f} ~/.$(basename ${f})

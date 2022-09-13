@@ -43,7 +43,6 @@ if command -v tmux > /dev/null; then
    mkdir -p ~/.tmux/plugins
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
    #Install tmux plugings
-   ln -sf ${DIR}/tmux_fixups.sh ~/.tmux/tmux_fixups.sh
    ln -sf ${DIR}/scripts/update_display.sh ~/.tmux/update_display.sh
    ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 fi
@@ -96,6 +95,8 @@ case "$(uname -s)" in
 
      ;;
 esac
+
+echo 'source ~/scripts/navigate' >> ~/.zshrc
 
 if [ $IS_WINDOWS -eq 1 ]; then
    git checkout ${DIR}/dot_files/gitconfig
