@@ -96,8 +96,6 @@ case "$(uname -s)" in
      ;;
 esac
 
-echo 'source ~/scripts/navigate' >> ~/.zshrc
-
 if [ $IS_WINDOWS -eq 1 ]; then
    git checkout ${DIR}/dot_files/gitconfig
    echo "applying windows-specific fixups"
