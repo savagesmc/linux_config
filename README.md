@@ -25,6 +25,7 @@ In particular it provides several ease-of-use wrappers around
 
 The required prerequisite packages are
 
+Common:
 ```
    zsh
    neovim
@@ -39,12 +40,11 @@ Optionally you can install
 
 If you would like copy/paste integration with the system clipboard you will need
 
-**Linux**
+**Ubuntu Linux**
 
 ```
-   xclip
-   #OR (xclip seems faster)
    xsel
+   wl-clipboard # wayland clipboard
 ```
 
 **Cygwin**
