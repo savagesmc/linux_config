@@ -17,19 +17,9 @@ ${DIR}/uninstall.sh
 source ${DIR}/functions.sh
 install_files
 
-#Install Vim plugins
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 #Force https git submodules.  See this:
 # https://github.com/ycm-core/ycmd/issues/1421
 git config --global url."https://".insteadOf git://
-
-#Install vim plugins
-vim \
-    "+PlugInstall" \
-    "+PlugClean" \
-    "+qall"
 
 #Put gitconfig back to what it was
 git checkout dot_files/gitconfig
