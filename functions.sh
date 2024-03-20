@@ -11,7 +11,6 @@ verlt() {
    [ "$1" = "$2" ] && return 1 || verlte $1 $2
 }
 
-# dot_files=(gitconfig vimrc)
 dot_files=$(find ${DIR}/dot_files -type f)
 scripts=$(find ${DIR}/scripts -type f)
 
