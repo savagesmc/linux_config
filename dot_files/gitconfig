@@ -22,3 +22,5 @@
    enabled = true
 [include]
    path = ~/.mygitconfig
+[init]
+	defaultBranch = main
