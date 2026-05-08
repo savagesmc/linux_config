@@ -40,15 +40,26 @@ fi
 #Don't share history between terminals
 echo 'setopt no_share_history' >> ~/.zshrc
 echo 'DISABLE_AUTO_UPDATE=true' >> ~/.zshrc
+echo '[ -f ~/.env ] && source ~/.env' >> ~/.zshrc
+
 ln -sf ${DIR}/custom.zsh ~/.oh-my-zsh/lib/custom.zsh
+
+#Create shared env file if it doesn't exist
+if [ ! -f ~/.env ]; then
+    echo "# Shared environment variables — sourced by both zsh and bash." > ~/.env
+    echo "# Add your own exports here. They survive dotfile reinstalls." >> ~/.env
+    echo "" >> ~/.env
+fi
 
 IS_WINDOWS=0
 case "$(uname -s)" in
 
    Darwin)
-     echo 'Detected MAC'
+      echo 'Detected MAC'
       EDITOR_PATH=$(command -v nvim 2>/dev/null || echo /usr/local/bin/nvim)
-      echo "export EDITOR=${EDITOR_PATH}" >> ~/.zshrc
+      if ! grep -q "^export EDITOR=" ~/.env 2>/dev/null; then
+          echo "export EDITOR=${EDITOR_PATH}" >> ~/.env
+      fi
      ;;
 
    Linux)

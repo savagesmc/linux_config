@@ -1,0 +1,2 @@
+# Load shared environment variables (survives dotfile reinstalls)
+[ -f ~/.env ] && source ~/.env
