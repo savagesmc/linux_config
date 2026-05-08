@@ -25,13 +25,13 @@ git config --global url."https://".insteadOf git://
 git checkout dot_files/gitconfig
 
 #Oh-my-zsh
-git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh || { echo "Failed to clone oh-my-zsh" >&2; exit 1; }
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 #TMUX plugin manager
 if command -v tmux > /dev/null; then
    mkdir -p ~/.tmux/plugins
-   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || { echo "Failed to clone tpm" >&2; exit 1; }
    #Install tmux plugings
    ln -sf ${DIR}/scripts/update_display.sh ~/.tmux/update_display.sh
    ~/.tmux/plugins/tpm/scripts/install_plugins.sh
@@ -47,7 +47,8 @@ case "$(uname -s)" in
 
    Darwin)
      echo 'Detected MAC'
-     echo 'export EDITOR=/usr/local/bin/nvim' >> ~/.zshrc
+      EDITOR_PATH=$(command -v nvim 2>/dev/null || echo /usr/local/bin/nvim)
+      echo "export EDITOR=${EDITOR_PATH}" >> ~/.zshrc
      ;;
 
    Linux)
